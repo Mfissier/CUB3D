@@ -1,9 +1,11 @@
 
 SRC = main.c \
 	  ./srcs/error.c \
-	  ./srcs/utils.c
+	  ./srcs/utils.c \
+	  ./srcs/utils2.c \
+	  ./srcs/free.
 
-CC = gcc -Wall -Werror -Wextra -g
+CC = gcc -Wall -Werror -Wextra -g 
 
 NAME = cub3D.a
 

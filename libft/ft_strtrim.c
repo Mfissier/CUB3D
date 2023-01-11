@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 10:30:35 by mafissie          #+#    #+#             */
-/*   Updated: 2022/05/25 16:59:41 by mafissie         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:39:34 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	while (s1[len - 1] && ft_strchr(set, s1[len - 1]) && len > i)
 		len--;
-	return (ft_substr((char *)s1, i, len - i));
+	return (ft_substr(s1, i, len - i));
 }

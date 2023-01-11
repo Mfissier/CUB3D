@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:57:55 by mafissie          #+#    #+#             */
-/*   Updated: 2022/05/25 18:37:17 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:22:30 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 
 # include <stddef.h>
 # include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
 
 void			ft_bzero(void *s, size_t n);
 int				ft_isalpha(int c);
@@ -46,12 +44,11 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
-char			*ft_substr(char *s, unsigned int start, size_t len);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			**ft_split(char const *s, char c);
-char			*ft_strjoin(char *s1, const char *s2);
 char			*ft_strtrim(char const *s1, char const *set);
+char			*ft_strjoin(char *s1, char const *s2);
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char			*get_next_line(int fd);
 
 #endif

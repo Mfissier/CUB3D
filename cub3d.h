@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 23:39:52 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/10 11:35:37 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:20:38 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <unistd.h>
 # include "minilibx-linux/mlx.h"
 
 # define EVENT_KEY_PRESS	2
@@ -30,6 +31,17 @@
 # define S_KEY		115
 # define D_KEY		100
 # define ESC		65307
+
+typedef struct s_args
+{
+	int		f_rgb[3];
+	int		c_rgb[3];
+	char	*path_no;
+	char	*path_so;
+	char	*path_we;
+	char	*path_ea;
+	char	*map;
+}				t_args;
 
 // CHECK ERROR
 int		is_err_map_args(char **map);
@@ -43,4 +55,9 @@ int		take_len_x(char **map);
 char	**create_map_check(char **map);
 void	fill_map_check(char **map, char ***sstr, size_t x);
 
+// utils2.c
+char	*read_file(int fd);
+
+// free.c
+void	free_sstr(char **sstr);
 #endif

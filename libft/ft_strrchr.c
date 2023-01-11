@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 13:15:37 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/10 11:03:55 by mafissie         ###   ########.fr       */
+/*   Updated: 2022/04/04 19:05:12 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strrchr(const char *s, int c)
 		return (NULL);
 	while (ft_strchr(tmp, c) != NULL)
 	{
-		i = (ft_strlen(tmp) - ft_strlen(s)) * -1;
+		i = (ft_strlen(tmp) - ft_strlen(s)) *-1;
 		tmp = ft_strchr(tmp + 1, c);
 		if (tmp == NULL)
 			return ((char *)s + i);

@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:38:59 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/10 11:04:12 by mafissie         ###   ########.fr       */
+/*   Updated: 2022/04/09 21:30:15 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	ft_init_index(&i, &j);
 	if (big == NULL)
 		return ((char *)0);
-	if (little == NULL || ft_strlen(little) == 0)
+	if (little == NULL || ft_strlen(little) == 0 )
 		return ((char *)big);
 	while (big[i] && (i < len))
 	{

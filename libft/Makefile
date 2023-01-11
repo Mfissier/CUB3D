@@ -32,9 +32,8 @@ SRCS += ft_strjoin.c
 SRCS += ft_strtrim.c
 SRCS += ft_strmapi.c
 SRCS += ft_striteri.c
-SRCS += get_next_line.c
 
-CC = gcc -g -Wall -Werror -Wextra
+CC = gcc -Wall -Werror -Wextra
 
 NAME = libft.a
 

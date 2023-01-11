@@ -6,36 +6,36 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/04 18:16:51 by mafissie          #+#    #+#             */
-/*   Updated: 2022/05/25 16:45:34 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/11 18:22:02 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char *s1, const char *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
-	size_t	i;
-	size_t	j;
-	size_t	len;
-	char	*dest;
+	char		*str1;
+	char		*str2;
+	char		*strj;
+	long int	i;
 
-	if (!s1)
-		return (free(s1), NULL);
-	i = -1;
-	j = 0;
-	len = ft_strlen(s1) + ft_strlen(s2);
-	dest = malloc(sizeof(char) * len + 1);
-	if (dest == NULL)
+	str1 = (char *)s1;
+	str2 = (char *)s2;
+	if (s1 == NULL)
 		return (NULL);
-	while (s1[++i])
-		dest[i] = s1[i];
-	dest[i] = 0;
-	while (s2[j])
-	{
-		dest[i] = s2[j];
-		i++;
-		j++;
-	}
-	dest[i] = 0;
-	return (free(s1), dest);
+	i = 0;
+	if (!*str2)
+		return (ft_strdup(str1));
+	else if (!*str1)
+		return (ft_strdup(str2));
+	strj = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
+	if (strj == NULL)
+		return (NULL);
+	while (*str1)
+		strj[i++] = *(str1++);
+	while (*str2)
+		strj[i++] = *(str2++);
+	strj[i] = '\0';
+	free(s1);
+	return (strj);
 }
