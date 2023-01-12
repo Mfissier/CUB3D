@@ -3,7 +3,11 @@ SRC = main.c \
 	  ./srcs/error.c \
 	  ./srcs/utils.c \
 	  ./srcs/utils2.c \
-	  ./srcs/free.
+	  ./srcs/free.c \
+	  ./srcs/parse_color.c \
+	  ./srcs/parse_map.c \
+	  ./srcs/init.c \
+	  ./srcs/parse_texture.c
 
 CC = gcc -Wall -Werror -Wextra -g 
 
@@ -29,7 +33,7 @@ $(NAME) : $(OBJ)
 
 $(OBJS)	:
 	$(CC)  -c $(SRC) $(INCLUDE) 
-	
+
 clean : 
 	make clean -C ./minilibx-linux
 	make clean -C ./libft
@@ -42,6 +46,6 @@ fclean : clean
 
 re : fclean all 
 	make fclean -C ./libft
-	
+
 run :
 	./cub3D map.ber

@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/29 14:58:07 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/12 18:16:15 by mafissie         ###   ########.fr       */
+/*   Created: 2023/01/12 18:27:31 by mafissie          #+#    #+#             */
+/*   Updated: 2023/01/12 18:30:38 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../cub3d.h"
 
-int	ft_atoi(const char *nptr)
+void	init_list_args(t_args *args)
 {
-	int			neg;
-	long int	nb;
-
-	neg = 1;
-	nb = 0;
-	while (*nptr && (*nptr == '\r' || *nptr == '\f' || *nptr == '\v'
-			|| *nptr == '\n' || *nptr == ' ' ||*nptr == '\t'))
-		nptr++;
-	if (*nptr == '-')
-	{
-		neg = -1;
-		nptr++;
-	}
-	else if (*nptr == '+')
-		nptr++;
-	while (*nptr && (*nptr >= '0' && *nptr <= '9'))
-		nb = (nb * 10) + *(nptr++) - 48;
-	return (nb * neg);
+	args->f_rgb[0] = -1;
+	args->c_rgb[0] = -1;
+	args->f_rgb[1] = -1;
+	args->c_rgb[1] = -1;
+	args->f_rgb[2] = -1;
+	args->c_rgb[2] = -1;
+	args->path_no = NULL;
+	args->path_so = NULL;
+	args->path_we = NULL;
+	args->path_ea = NULL;
+	args->map = NULL;
 }

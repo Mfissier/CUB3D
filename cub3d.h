@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 23:39:52 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/11 19:20:38 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:39:18 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_args
 	char	*path_so;
 	char	*path_we;
 	char	*path_ea;
-	char	*map;
+	char	**map;
 }				t_args;
 
 // CHECK ERROR
@@ -60,4 +60,13 @@ char	*read_file(int fd);
 
 // free.c
 void	free_sstr(char **sstr);
+void	free_args(t_args *args);
+
+// parse_texture.c
+int		check_rules_order(char **map);
+int		parse_texture(char **map, t_args *args);
+
+// init.c
+void	init_list_args(t_args *args);
+
 #endif
