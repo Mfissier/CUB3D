@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 23:39:52 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/13 12:11:26 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:18:01 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	send_error_exit(char *str);
 
 // utils.c
 void	display_map(char **map);
-int		take_len_y(char **map);
-int		take_len_x(char **map);
-char	**create_map_check(char **map);
-void	fill_map_check(char **map, char ***sstr, size_t x);
+int		take_len_y(char **map, int start);
+size_t	take_len_x(char **map, size_t start);
+char	**create_map_check(char **map, int start);
+void	fill_map_check(char **map, char ***sstr, size_t x, int start);
 
 // utils2.c
 void	check_file(char *str);
@@ -70,5 +70,8 @@ int		parse_texture(char **map, t_args *args);
 
 // init.c
 void	init_list_args(t_args *args);
+
+// parse_map.c
+void	take_map(char ***map, t_args *args);
 
 #endif

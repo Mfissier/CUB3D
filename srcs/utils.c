@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:47:31 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/10 11:47:53 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/13 18:48:10 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,37 +28,38 @@ void	display_map(char **map)
 	}
 }
 
-int	take_len_x(char **map)
+size_t	take_len_x(char **map, size_t start)
 {
-	int	count;
-	int	y;
-	int	x;
+	size_t	count;
+	size_t	y;
+	size_t	x;
 
-	y = -1;
-	x = -1;
+	y = start;
+	x = 0;
 	count = 0;
-	while (map[++y])
+	while (map[y])
 	{
-		while (map[y][++x])
+		while (map[y][x++])
 			;
 		if (x > count)
 			count = x;
-		x = -1;
+		x = 0;
+		y++;
 	}
 	return (count);
 }
 
-int	take_len_y(char **map)
+int	take_len_y(char **map, int start)
 {
 	int	y;
 
-	y = -1;
+	y = start - 1;
 	while (map[++y])
 		;
 	return (y);
 }
 
-char	**create_map_check(char **map)
+char	**create_map_check(char **map, int start)
 {
 	char	**sstr;
 	int		y;
@@ -66,17 +67,17 @@ char	**create_map_check(char **map)
 	int		i;
 
 	sstr = NULL;
-	y = take_len_y(map);
-	x = take_len_x(map);
+	y = start;
+	x = take_len_x(map, start);
 	i = -1;
 	if (y && x)
 	{
-		sstr = ft_calloc(sizeof(sstr), (take_len_y(map) + 1));
+		sstr = ft_calloc(sizeof(sstr), (take_len_y(map, start) + 2));
 		if (sstr == NULL)
 			send_error_exit("Malloc failed !");
 		while (++i < y)
 		{
-			sstr[i] = ft_calloc(sizeof(*sstr), (x + 1));
+			sstr[i] = ft_calloc(sizeof(*sstr), (x + 2));
 			if (sstr[i] == NULL)
 				send_error_exit("Malloc failed !");
 		}
@@ -85,25 +86,46 @@ char	**create_map_check(char **map)
 	return (sstr);
 }
 
-void	fill_map_check(char **map, char ***sstr, size_t x)
+void	fill_map_check(char **map, char ***sstr, size_t x, int start)
 {
 	size_t	j;
 	size_t	i;
 	char	**tmp;
+	int		check;
+	int		new_y;
+	int 	new_x;
 
-	j = -1;
+	if (start)
+		check = 0;
+	else
+		check = 1;
+	j = start - 1;
 	i = -1;
 	tmp = *sstr;
+	new_y = 0;
+	new_x = 0;
 	while (map[++j])
 	{
 		while (++i < x)
 		{
-			if (i < ft_strlen(map[j]))
-				tmp[j][i] = map[j][i];
+			if (check)
+			{
+				if (i < ft_strlen(map[j]))
+					tmp[j][i] = map[j][i];
+				else
+					tmp[j][i] = ' ';
+			}
 			else
-				tmp[j][i] = ' ';
+			{
+				if (i < ft_strlen(map[j]))
+					tmp[new_y][new_x] = map[j][i];
+				else
+					tmp[new_y][new_x] = ' ';
+				new_x++;
+			}
 		}
-		tmp[j][i] = '\0';
+		new_x = 0;
+		new_y++;
 		i = -1;
 	}
 }
