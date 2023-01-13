@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 19:19:01 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/12 18:38:53 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:11:09 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,14 @@ void	free_args(t_args *args)
 	free(args->path_so);
 	free(args->path_we);
 	free(args->path_ea);
+}
+
+void	free_all(char ***map, t_args *args, char **str)
+{
+	free_args(args);
+	args = NULL;
+	free_sstr(*map);
+	map = NULL;
+	free(*str);
+	str = NULL;
 }

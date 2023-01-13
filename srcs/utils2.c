@@ -6,11 +6,33 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:50:12 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/11 18:57:45 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:02:00 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void	check_file(char *str)
+{
+	int	fd;
+
+	if (str == NULL)
+		send_error_exit("Error name file !\n");
+	if ((ft_strlen(str) == 4) && ft_strnstr(str, ".cub", ft_strlen(str)))
+		send_error_exit("Is .cub, juste need name for win !\n");
+	if (ft_strlen(str) < 4)
+		send_error_exit("Name map incorrect !\n");
+	if (ft_strlen(str) > 4 && (str[ft_strlen(str) - 1] != 'b'
+			|| str[ft_strlen(str) - 2] != 'u'
+			|| str[ft_strlen(str) - 3] != 'c'
+			|| str[ft_strlen(str) - 4] != '.'))
+		send_error_exit("Name map incorrect !\n");
+	fd = open(str, O_DIRECTORY);
+	if (fd < 0)
+		return ;
+	close(fd);
+	send_error_exit("File is a directory !\n");
+}
 
 char	*read_file(int fd)
 {
