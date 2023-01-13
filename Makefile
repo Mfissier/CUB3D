@@ -21,7 +21,7 @@ OBJ = $(SRC:.c=.o)
 
 all : $(EXEC) 
 
-$(EXEC) : $(NAME)
+$(EXEC) : $(NAME) 
 	ar rcs cub3D.a $(OBJ)
 	${CC} -o cub3D cub3D.a $(INCLUDE) 
 
@@ -48,4 +48,4 @@ re : fclean all
 	make fclean -C ./libft
 
 run :
-	./cub3D map.ber
+	./cub3D map.cub

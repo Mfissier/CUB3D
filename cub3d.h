@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 23:39:52 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/12 18:39:18 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/13 12:11:26 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,16 @@ char	**create_map_check(char **map);
 void	fill_map_check(char **map, char ***sstr, size_t x);
 
 // utils2.c
+void	check_file(char *str);
 char	*read_file(int fd);
 
 // free.c
 void	free_sstr(char **sstr);
 void	free_args(t_args *args);
+void	free_all(char ***map, t_args *args, char **str);
 
 // parse_texture.c
-int		check_rules_order(char **map);
+int		check_rules_order(char **map, t_args *args);
 int		parse_texture(char **map, t_args *args);
 
 // init.c

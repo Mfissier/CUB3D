@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 11:35:22 by mafissie          #+#    #+#             */
-/*   Updated: 2022/04/09 20:57:26 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/13 09:08:51 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*ft_wordtab(const char *s, char c, char **str)
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
-	*str = malloc(sizeof(char) * (i + 1));
+	*str = ft_calloc(sizeof(char), (i + 2));
 	if (*str == NULL)
 		return (NULL);
 	i = 0;
@@ -78,7 +78,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	i = 0;
-	tab = malloc(sizeof(*tab) * (ft_wordnbr(s, c) + 1));
+	tab = ft_calloc(sizeof(*tab), (ft_wordnbr(s, c) + 2));
 	if (tab == NULL)
 		return (NULL);
 	while (*s && *s == c)
