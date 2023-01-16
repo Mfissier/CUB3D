@@ -7,7 +7,8 @@ SRC = main.c \
 	  ./srcs/parse_color.c \
 	  ./srcs/parse_map.c \
 	  ./srcs/init.c \
-	  ./srcs/parse_texture.c
+	  ./srcs/parse_texture.c \
+	  ./srcs/check_wall.c
 
 CC = gcc -Wall -Werror -Wextra -g 
 

@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:03:16 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/13 18:39:38 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/16 10:05:58 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	main(int ac, char **av)
 		send_error_exit("Malloc Failed \n");
 	free(str);
 	str = NULL;
-	display_map(sstr);
 	parse_texture(sstr, &args);
 	take_map(&sstr, &args);
 	free_all(&sstr, &args, &str);
