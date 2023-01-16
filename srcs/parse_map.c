@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:05:58 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/16 10:47:21 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/16 11:48:37 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	fill_take_map(char **map, char ***sstr, size_t x, size_t y)
 {
 	size_t	j;
 	size_t	i;
-	size_t  index;
+	size_t	index;
 	char	**tmp;
 
 	j = y;

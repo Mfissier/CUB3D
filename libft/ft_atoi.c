@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 14:58:07 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/12 18:16:15 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/16 11:49:54 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_atoi(const char *nptr)
 	neg = 1;
 	nb = 0;
 	while (*nptr && (*nptr == '\r' || *nptr == '\f' || *nptr == '\v'
-			|| *nptr == '\n' || *nptr == ' ' ||*nptr == '\t'))
+			|| *nptr == '\n' || *nptr == ' ' || *nptr == '\t'))
 		nptr++;
 	if (*nptr == '-')
 	{
