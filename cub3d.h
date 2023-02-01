@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 23:39:52 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/16 10:46:02 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:53:30 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 # define D_KEY		100
 # define ESC		65307
 
+# define WIN_LENW 1000
+# define WIN_LENH 1000
+
 typedef struct s_args
 {
 	int		f_rgb[3];
@@ -43,6 +46,11 @@ typedef struct s_args
 	char	**map;
 }				t_args;
 
+typedef struct s_window
+{
+	void		*mlx;
+	void		*pwin;
+}				t_window;
 // CHECK ERROR
 int		is_err_map_args(char **map);
 int		is_err_map_wall(char **map);
@@ -76,5 +84,8 @@ void	take_map(char ***map, t_args *args);
 
 // check_wall.c
 int		check_wall(char **map);
+
+// cub.c
+void	cub(char **map, t_args *args);
 
 #endif

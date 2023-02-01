@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:06:22 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/13 12:23:41 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/01/17 11:23:55 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ int	check_rules_order(char **map, t_args *args)
 	while (map[++i])
 	{
 		if (ft_strnstr(map[i], "NO", ft_strlen(map[i]))
-			|| ft_strnstr(map[i], "SO", ft_strlen(map[i]))
-			|| ft_strnstr(map[i], "WE", ft_strlen(map[i]))
-			|| ft_strnstr(map[i], "EA", ft_strlen(map[i]))
-			|| ft_strnstr(map[i], "F", ft_strlen(map[i]))
-			|| ft_strnstr(map[i], "C", ft_strlen(map[i])))
+				|| ft_strnstr(map[i], "SO", ft_strlen(map[i]))
+				|| ft_strnstr(map[i], "WE", ft_strlen(map[i]))
+				|| ft_strnstr(map[i], "EA", ft_strlen(map[i]))
+				|| ft_strnstr(map[i], "F", ft_strlen(map[i]))
+				|| ft_strnstr(map[i], "C", ft_strlen(map[i])))
 			if (i > index_map)
 				return (-1);
 	}

@@ -1,14 +1,15 @@
 
 SRC = main.c \
-	  ./srcs/error.c \
-	  ./srcs/utils.c \
-	  ./srcs/utils2.c \
-	  ./srcs/free.c \
-	  ./srcs/parse_color.c \
-	  ./srcs/parse_map.c \
-	  ./srcs/init.c \
-	  ./srcs/parse_texture.c \
-	  ./srcs/check_wall.c
+	./srcs/error.c \
+	./srcs/utils.c \
+	./srcs/utils2.c \
+	./srcs/free.c \
+	./srcs/parse_color.c \
+	./srcs/parse_map.c \
+	./srcs/init.c \
+	./srcs/parse_texture.c \
+	./srcs/check_wall.c \
+	./srcs/cub.c
 
 CC = gcc -Wall -Werror -Wextra -g 
 
@@ -16,7 +17,7 @@ NAME = cub3D.a
 
 EXEC = cub3D
 
-INCLUDE = -L .  #./minilibx-linux -lmlx -Ilmlx -lXext -lX11
+INCLUDE = -L ./minilibx-linux -lmlx -Ilmlx -lXext -lX11
 
 OBJ = $(SRC:.c=.o)
 

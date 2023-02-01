@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 10:03:16 by mafissie          #+#    #+#             */
-/*   Updated: 2023/01/16 10:05:58 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:08:59 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	main(int ac, char **av)
 	str = NULL;
 	parse_texture(sstr, &args);
 	take_map(&sstr, &args);
+	cub(sstr, &args);
 	free_all(&sstr, &args, &str);
 	return (0);
 }
