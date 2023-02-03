@@ -6,7 +6,7 @@
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 23:39:52 by mafissie          #+#    #+#             */
-/*   Updated: 2023/02/01 14:53:30 by mafissie         ###   ########.fr       */
+/*   Updated: 2023/02/03 19:45:24 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,32 @@ typedef struct s_args
 	char	**map;
 }				t_args;
 
+typedef struct s_graph
+{
+	void	*img;
+	char	*addr;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	// int				back;
+	// int				left;
+	// int				right;
+	// int				rotate_left;
+	// int				rotate_right;
+	// int				minimapechelle;
+	// void			*img2;
+	// int				*addr2;
+}				t_graph;
+
 typedef struct s_window
 {
 	void		*mlx;
 	void		*pwin;
+	char		**map;
+	t_args		*args;
+	t_graph		graph[4];
 }				t_window;
 // CHECK ERROR
 int		is_err_map_args(char **map);
@@ -78,6 +100,11 @@ int		parse_texture(char **map, t_args *args);
 
 // init.c
 void	init_list_args(t_args *args);
+int		init_img(t_window *win);
+
+// mlx_destroy.c
+int		destroy_img(t_window *win, int check);
+void	destroy_event_exit(t_window *win);
 
 // parse_map.c
 void	take_map(char ***map, t_args *args);

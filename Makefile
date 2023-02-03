@@ -9,7 +9,8 @@ SRC = main.c \
 	./srcs/init.c \
 	./srcs/parse_texture.c \
 	./srcs/check_wall.c \
-	./srcs/cub.c
+	./srcs/cub.c \
+	./srcs/mlx_destroy.c 
 
 CC = gcc -Wall -Werror -Wextra -g 
 

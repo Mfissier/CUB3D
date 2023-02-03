@@ -1,47 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   mlx_destroy.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 19:19:01 by mafissie          #+#    #+#             */
-/*   Updated: 2023/02/03 18:55:08 by mafissie         ###   ########.fr       */
+/*   Created: 2023/02/03 19:04:27 by mafissie          #+#    #+#             */
+/*   Updated: 2023/02/03 19:38:07 by mafissie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	free_sstr(char **sstr)
+int	destroy_img(t_window *win, int check)
 {
 	int	i;
 
 	i = 0;
-	while (sstr[i])
+	while (i < check)
 	{
-		free(sstr[i]);
+		mlx_destroy_image(win->mlx, win->graph[i].img);
 		i++;
 	}
-	free(sstr);
+	return (0);
 }
 
-void	free_args(t_args *args)
+void	destroy_event_exit(t_window *win)
 {
-	if (args->map != NULL)
-		free_sstr(args->map);
-	free(args->path_no);
-	free(args->path_so);
-	free(args->path_we);
-	free(args->path_ea);
-}
-
-void	free_all(char ***map, t_args *args, char **str)
-{
-	free_args(args);
-	args = NULL;
-	free_sstr(*map);
-	map = NULL;
-	if (*str != NULL)
-		free(*str);
-	str = NULL;
+	destroy_img(win, 4);
+	mlx_destroy_window(win->mlx, win->pwin);
+	mlx_destroy_display(win->mlx);
+	free_sstr(win->map);
+	free_args(win->args);
+	free(win->mlx);
 }

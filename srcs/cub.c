@@ -1,22 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mafissie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/02 11:46:39 by mafissie          #+#    #+#             */
+/*   Updated: 2023/02/03 19:43:50 by mafissie         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
-#include "../minilibx-linux/mlx.h"
 
 int	ft_close_with_mouse(t_window *win)
 {
-	mlx_destroy_window(win->mlx, win->pwin);
-	mlx_destroy_display(win->mlx);
-	free(win->mlx);
+	destroy_event_exit(win);
 	exit(0);
-	return (0);
 }
 
 int	event_handler(int keycode, t_window *win)
 {
 	if (keycode == ESC)
 	{
-		mlx_destroy_window(win->mlx, win->pwin);
-		mlx_destroy_display(win->mlx);
-		free(win->mlx);
+		destroy_event_exit(win);
 		exit(0);
 	}
 	else if (keycode == A_KEY)
@@ -30,26 +36,43 @@ int	event_handler(int keycode, t_window *win)
 	return (0);
 }
 
-void	cub(char **map, t_args *args)
+t_window	init_data_cub(t_args *args, char **nmap)
 {
 	t_window	win;
 
-	(void)args;
-	display_map(map);
-	// modify map.cub for good test
-	// init_win with *->args (with norm)
-	// teste if open img.xpm || ERROR ?
-	// display img with window
-	// Add all hook with valgrind testing
-	// take and init all data
-	// raycasting
-	// testing
-	// convert img 2D to 3D
-	/* ft_fill_img_data(&win, win.map); */
+	win.args = args;
 	win.mlx = NULL;
 	win.pwin = NULL;
 	win.mlx = mlx_init();
-	win.pwin = mlx_new_window(win.mlx, WIN_LENW, WIN_LENH, \
+	if (!win.mlx)
+	{
+		free_args(args);
+		free_sstr(nmap);
+		send_error_exit("Init mlx failed !\n");
+	}
+	if (!init_img(&win))
+	{
+		free_args(args);
+		free_sstr(nmap);
+		mlx_destroy_display(win.mlx);
+		free(win.mlx);
+		send_error_exit("Init img failed !\n");
+	}
+	win.map = nmap;
+	return (win);
+}
+
+void	cub(char **map, t_args *args)
+{
+	t_window	win;
+	int			size_x;
+	int			size_y;
+
+	(void)args;
+	display_map(map);
+	win = init_data_cub(args, map);
+	mlx_get_screen_size(win.mlx, &size_x, &size_y);
+	win.pwin = mlx_new_window(win.mlx, size_x, size_y, \
 	"cub3d");
 	mlx_hook(win.pwin, 2, 1L << 0, event_handler, &win);
 	mlx_hook(win.pwin, 17, 1L << 0, event_handler, &win);
